@@ -9,8 +9,8 @@ import os
 class MedicalGraph:
     def __init__(self):
         cur_dir = '/'.join(os.path.abspath(__file__).split('/')[:-1])
-        self.data_path = os.path.join(cur_dir, 'DATA/disease.csv')
-        self.graph = Graph("http://localhost:7474", username="neo4j", password="123456789")
+        self.data_path = os.path.join(cur_dir, 'data/disease.csv')
+        self.graph = Graph("http://172.16.68.95:7474", username="neo4j", password="1")
 
     def read_file(self):
         """
@@ -162,6 +162,9 @@ class MedicalGraph:
         self.create_relationship("Disease", "Alias", rel_alias, "ALIAS_IS", "别名")
         self.create_relationship("Disease", "Symptom", rel_symptom, "HAS_SYMPTOM", "症状")
         self.create_relationship("Disease", "Part", rel_part, "PART_IS", "发病部位")
+        #以下是基于Bert-NER的中文信息抽取系统的最终实验结果，模型细节请关注我们下一篇：《基于Bert-NER构建特定领域的中文信息抽取框架（下）》。
+
+
         self.create_relationship("Disease", "Department", rel_department, "DEPARTMENT_IS", "所属科室")
         self.create_relationship("Disease", "Complication", rel_complication, "HAS_COMPLICATION", "并发症")
         self.create_relationship("Disease", "Drug", rel_drug, "HAS_DRUG", "药品")
