@@ -5,7 +5,7 @@ import ahocorasick
 from sklearn.externals import joblib
 import jieba
 import numpy as np
-
+#２０１９
 
 class EntityExtractor:
     def __init__(self):
